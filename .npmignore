@@ -1,0 +1,12 @@
+# игнорируем директории
+src/__tests__/
+node_modules/
+dist/
+coverage/
+/.idea
+# игнорируем файлы
+*.log
+*.test.ts
+tsconfig.json
+vitest.config.ts
+README_DRAFT.md

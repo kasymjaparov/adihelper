@@ -1,7 +1,7 @@
 {
   "name": "@kasymjaparov/adihelper",
-  "version": "1.0.0",
-  "description": "Utility helpers for strings, files and dates",
+  "version": "0.0.2",
+  "description": "Utility helpers",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -24,15 +24,19 @@
     "file",
     "helper"
   ],
-  "author": "Kasym Japarov",
+  "author": "Kasymjaparov Adilet",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kasymjaparov/adihelper.git"
+  },
   "license": "MIT",
   "dependencies": {
-    "@types/node": "^24.0.10",
     "date-fns": "^3.6.0"
   },
   "devDependencies": {
     "tsup": "^8.0.0",
     "typescript": "^5.3.3",
-    "vitest": "^1.5.0"
+    "vitest": "^1.5.0",
+    "@types/node": "^24.0.10"
   }
 }
