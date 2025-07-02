@@ -1,0 +1,38 @@
+{
+  "name": "@kasymjaparov/adihelper",
+  "version": "1.0.0",
+  "description": "Utility helpers for strings, files and dates",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsup index.ts --format esm,cjs --dts",
+    "test": "vitest run"
+  },
+  "keywords": [
+    "utils",
+    "typescript",
+    "date",
+    "string",
+    "file",
+    "helper"
+  ],
+  "author": "Kasym Japarov",
+  "license": "MIT",
+  "dependencies": {
+    "@types/node": "^24.0.10",
+    "date-fns": "^3.6.0"
+  },
+  "devDependencies": {
+    "tsup": "^8.0.0",
+    "typescript": "^5.3.3",
+    "vitest": "^1.5.0"
+  }
+}
