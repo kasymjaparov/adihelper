@@ -1,6 +1,6 @@
 {
   "name": "@kasymjaparov/adihelper",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Utility helpers",
   "main": "dist/index.js",
   "module": "dist/index.js",
@@ -13,8 +13,12 @@
     }
   },
   "scripts": {
-    "build": "tsup index.ts --format esm,cjs --dts",
-    "test": "vitest run"
+    "build": "tsup",
+    "build:dev": "tsup --watch",
+    "build:analyze": "tsup --metafile",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "prepublishOnly": "npm run build"
   },
   "keywords": [
     "utils",
