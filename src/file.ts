@@ -105,7 +105,14 @@ export class FileHelper {
      * @returns Promise с base64 строкой
      */
     static async fileObjectToBase64(file: File): Promise<string> {
-        return this.blobToBase64(file);
+        return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.onload = () => {
+                resolve(reader.result as string);
+            };
+            reader.onerror = () => reject(new Error('Failed to convert blob to base64'));
+            reader.readAsDataURL(file);
+        });
     }
 
     /**
@@ -186,17 +193,17 @@ export class FileHelper {
      * @returns Отформатированная строка (например, "1.5 MB")
      */
     static formatFileSize(bytes: number, decimals: number = 2): string {
-      if (bytes === 0) return '0 Bytes';
+        if (bytes === 0) return '0 Bytes';
 
-      const k = 1024;
-      const dm = decimals < 0 ? 0 : decimals;
-      const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+        const k = 1024;
+        const dm = decimals < 0 ? 0 : decimals;
+        const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
 
-      const i = Math.floor(Math.log(bytes) / Math.log(k));
-      const value = bytes / Math.pow(k, i);
+        const i = Math.floor(Math.log(bytes) / Math.log(k));
+        const value = bytes / Math.pow(k, i);
 
-      const formatted = dm === 0 ? Math.round(value).toString() : parseFloat(value.toFixed(dm)).toString();
+        const formatted = dm === 0 ? Math.round(value).toString() : parseFloat(value.toFixed(dm)).toString();
 
-      return formatted + ' ' + sizes[i];
+        return formatted + ' ' + sizes[i];
     }
 }
