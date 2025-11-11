@@ -1,6 +1,6 @@
 {
   "name": "@kasymjaparov/adihelper",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Utility helpers",
   "main": "dist/index.js",
   "module": "dist/index.js",
