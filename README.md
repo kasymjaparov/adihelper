@@ -30,11 +30,12 @@ DateHelper.formatDateToText("03.04.2025");           // "3 апреля 2025"
 
 ### StringHelper
 
-| Метод | Описание | Пример |
-|-------|----------|--------|
-| `getLastSymbol(str: string)` | Возвращает последний символ строки | `getLastSymbol("hello")` → `"o"` |
-| `capitalize(str: string)` | Делает первую букву заглавной | `capitalize("hello")` → `"Hello"` |
-| `reverse(str: string)` | Переворачивает строку | `reverse("hello")` → `"olleh"` |
+| Метод                                          | Описание                           | Пример                                  |
+|------------------------------------------------|------------------------------------|-----------------------------------------|
+| `getLastSymbol(str: string)`                   | Возвращает последний символ строки | `getLastSymbol("hello")` → `"o"`        |
+| `capitalize(str: string)`                      | Делает первую букву заглавной      | `capitalize("hello")` → `"Hello"`       |
+| `capitalize(str: string)`                      | Делает первую букву заглавной      | `capitalize("hello")` → `"Hello"`       |
+| `getQueryString(obj: Record<string, unknown>)` | Получаем querystring               | `getQueryString({page:1})` → `"page=1"` |
 
 ### FileHelper
 

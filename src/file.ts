@@ -206,4 +206,53 @@ export class FileHelper {
 
         return formatted + ' ' + sizes[i];
     }
+
+    /**
+     * Инициирует загрузку файла в браузере
+     * @param data - Данные для загрузки (Blob, base64 строка, data URL или обычный URL)
+     * @param fileName - Имя файла для скачивания
+     * @param mimeType - MIME тип (опционально, требуется для base64 строк)
+     */
+    static download(data: Blob | string, fileName: string, mimeType?: string): void {
+        try {
+            const link = document.createElement('a');
+            link.download = fileName;
+
+            // Определяем тип данных и создаем соответствующий URL
+            if (data instanceof Blob) {
+                // Blob - создаем object URL
+                const url = URL.createObjectURL(data);
+                link.href = url;
+
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+
+                // Освобождаем URL
+                URL.revokeObjectURL(url);
+            } else if (typeof data === 'string') {
+                // Проверяем, является ли строка data URL
+                if (data.startsWith('data:')) {
+                    link.href = data;
+                } else if (data.startsWith('http://') || data.startsWith('https://') || data.startsWith('blob:')) {
+                    // Обычный URL или blob URL
+                    link.href = data;
+                } else {
+                    // Предполагаем, что это base64 строка
+                    if (!mimeType) {
+                        throw new Error('mimeType is required when data is a base64 string');
+                    }
+                    link.href = this.base64ToDataURL(data, mimeType);
+                }
+
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            } else {
+                throw new Error('Invalid data type. Expected Blob, URL string, or base64 string');
+            }
+        } catch (error) {
+            throw new Error(`Failed to download file: ${(error as Error).message}`);
+        }
+    }
 }
